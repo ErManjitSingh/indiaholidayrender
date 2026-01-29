@@ -1,0 +1,28 @@
+{
+  "name": "api_indiaholiday_nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "india",
+    "holiday"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "India Holiday API built with Node.js",
+  "dependencies": {
+    "@google-analytics/data": "^3.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-rate-limit": "^7.1.5",
+    "google-auth-library": "^9.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^9.1.5"
+  }
+}

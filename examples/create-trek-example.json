@@ -1,0 +1,139 @@
+{
+  "packageInfo": {
+    "title": "Triund Trek",
+    "description": "A beautiful and moderate trek in Himachal Pradesh offering stunning views of the Dhauladhar range. Perfect for beginners and experienced trekkers alike.",
+    "imageUrl": "https://example.com/images/triund-trek.jpg",
+    "duration": "2D/1N",
+    "price": 2500,
+    "currency": "INR",
+    "startLocation": "McLeod Ganj",
+    "endLocation": "Triund",
+    "difficulty": "Moderate",
+    "maxAltitude": 2850,
+    "groupSize": 12,
+    "bestSeason": ["Summer", "Winter"]
+  },
+  "content": {
+    "aboutContent": "Triund Trek is one of the most popular treks in Himachal Pradesh, located near McLeod Ganj. The trek offers breathtaking views of the Dhauladhar mountain range and the Kangra Valley. It's a perfect weekend getaway for adventure enthusiasts.\n\nThe trek starts from McLeod Ganj and takes you through beautiful forests, meadows, and rocky terrains. The trail is well-marked and suitable for beginners. The summit offers panoramic views that make the effort worthwhile.",
+    "highlights": [
+      "Stunning views of Dhauladhar range",
+      "Perfect for beginners",
+      "Beautiful camping experience",
+      "Close to McLeod Ganj",
+      "Well-marked trail"
+    ],
+    "inclusions": [
+      "Transportation from McLeod Ganj",
+      "Camping equipment",
+      "Meals (breakfast, lunch, dinner)",
+      "Trek guide",
+      "First aid kit"
+    ],
+    "exclusions": [
+      "Personal expenses",
+      "Travel insurance",
+      "Any meals not mentioned",
+      "Tips and gratuities"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Day 1: McLeod Ganj to Triund",
+        "description": "Start early morning from McLeod Ganj. Trek through beautiful forests and reach Triund by afternoon. Set up camp and enjoy the sunset views.",
+        "activities": [
+          "Trekking",
+          "Camping",
+          "Photography"
+        ],
+        "meals": ["Breakfast", "Lunch", "Dinner"],
+        "accommodation": "Camping"
+      },
+      {
+        "day": 2,
+        "title": "Day 2: Triund to McLeod Ganj",
+        "description": "Wake up early to catch the sunrise. After breakfast, descend back to McLeod Ganj.",
+        "activities": [
+          "Sunrise viewing",
+          "Trekking",
+          "Return journey"
+        ],
+        "meals": ["Breakfast"],
+        "accommodation": "None"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What is the best time to do Triund Trek?",
+        "answer": "The best time to do Triund Trek is from March to June and September to November. During these months, the weather is pleasant and the views are clear.",
+        "order": 1
+      },
+      {
+        "question": "Is Triund Trek suitable for beginners?",
+        "answer": "Yes, Triund Trek is perfect for beginners. The trail is well-marked and the difficulty level is moderate. However, basic fitness is recommended.",
+        "order": 2
+      },
+      {
+        "question": "What should I carry for the trek?",
+        "answer": "Carry warm clothes, good trekking shoes, water bottle, snacks, sunscreen, and a camera. All camping equipment will be provided.",
+        "order": 3
+      },
+      {
+        "question": "How long does it take to complete the trek?",
+        "answer": "The trek takes approximately 4-5 hours to reach Triund from McLeod Ganj and 3-4 hours to descend. It's a 2-day trek with overnight camping.",
+        "order": 4
+      }
+    ],
+    "tips": [
+      "Start early to avoid the afternoon sun",
+      "Carry sufficient water",
+      "Wear comfortable trekking shoes",
+      "Don't litter on the trail",
+      "Respect the local environment"
+    ],
+    "thingsToCarry": [
+      "Backpack",
+      "Water bottle",
+      "Warm clothes",
+      "Trekking shoes",
+      "Sunscreen",
+      "Sunglasses",
+      "Camera",
+      "Snacks",
+      "First aid kit"
+    ]
+  },
+  "seoSettings": {
+    "focusKeyword": "triund trek himachal",
+    "canonicalUrl": "https://example.com/treks/triund-trek",
+    "robots": "index, follow",
+    "anchorText": "Triund Trek",
+    "internalLinks": 5,
+    "imageCount": 10,
+    "altCoverage": 90,
+    "featuredImageAlt": "Triund Trek - Beautiful views of Dhauladhar range",
+    "ctaText": "Book Now",
+    "whatsapp": true,
+    "call": true,
+    "whatsappNumber": "+91-9876543210",
+    "callNumber": "+91-9876543210",
+    "previewed": false
+  },
+  "keywordSettings": {
+    "pageType": "trek",
+    "location": "Himachal",
+    "name": "Triund Trek",
+    "duration": "2 days",
+    "difficulty": "Moderate",
+    "season": "Summer",
+    "sourceCity": "Delhi",
+    "autoApply": true,
+    "keywords": [
+      "triund trek",
+      "triund trek himachal",
+      "triund trek mcleod ganj",
+      "triund trek package",
+      "triund trek booking"
+    ]
+  },
+  "status": "published"
+}
