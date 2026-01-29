@@ -6,10 +6,20 @@
 const jwt = require('jsonwebtoken');
 
 /**
+ * Optional: skip GA4 auth when SKIP_GA4_AUTH=1 (e.g. for health checks / testing)
+ */
+const skipAuth = process.env.SKIP_GA4_AUTH === '1' || process.env.SKIP_GA4_AUTH === 'true';
+
+/**
  * Simple admin authentication middleware
  * TODO: Replace with proper JWT/session authentication
  */
 const authenticateAdmin = (req, res, next) => {
+  if (skipAuth) {
+    req.admin = { id: 'admin', role: 'admin' };
+    return next();
+  }
+
   // For now, check for admin token in header
   // In production, implement proper JWT validation
   const token = req.headers.authorization?.replace('Bearer ', '') || req.headers['x-admin-token'];
@@ -24,25 +34,25 @@ const authenticateAdmin = (req, res, next) => {
     });
   }
 
-  // Simple token validation (replace with proper JWT verification)
-  // For development, accept any token. In production, verify JWT:
-  /*
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.admin = decoded;
-    next();
-  } catch (error) {
-    return res.status(401).json({
-      success: false,
-      error: {
-        code: 'INVALID_TOKEN',
-        message: 'Invalid or expired token',
-      },
-    });
+  // If JWT_SECRET is set, verify token from POST /api/auth/login
+  const secret = process.env.JWT_SECRET;
+  if (secret) {
+    try {
+      const decoded = jwt.verify(token, secret);
+      req.admin = { id: decoded.email, email: decoded.email, role: decoded.role || 'admin' };
+      return next();
+    } catch (err) {
+      return res.status(401).json({
+        success: false,
+        error: {
+          code: 'INVALID_TOKEN',
+          message: 'Invalid or expired token',
+        },
+      });
+    }
   }
-  */
 
-  // Development mode - accept any token
+  // No JWT_SECRET: accept any token (dev only)
   req.admin = { id: 'admin', role: 'admin' };
   next();
 };

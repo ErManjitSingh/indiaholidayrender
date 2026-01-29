@@ -41,9 +41,10 @@ GA4_CLIENT_ID=your_client_id
 GA4_CLIENT_SECRET=your_client_secret
 GA4_SERVICE_ACCOUNT_KEY_PATH=./config/ga4-service-account.json
 
-# Security
-JWT_SECRET=your-secret-key-change-in-production
-SESSION_SECRET=your-session-secret-change-in-production
+# Auth (JWT + admin login)
+JWT_SECRET=your-super-secret-key
+ADMIN_EMAIL=your-admin@example.com
+ADMIN_PASSWORD=your-secure-password
 ```
 
 ### 3. GA4 Service Account Setup
@@ -70,16 +71,52 @@ Server will start on `http://localhost:3000`
 - `GET /health` - Overall health check
 - `GET /api/ga4/health` - GA4 connection test (Admin only)
 
+### Auth – Login (JWT)
+
+**POST /api/auth/login**
+
+Request body:
+```json
+{
+  "email": "manjitsingh012345@gmail.com",
+  "password": "your-admin-password"
+}
+```
+
+Success (200):
+```json
+{
+  "success": true,
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "user": { "email": "manjitsingh012345@gmail.com", "role": "admin" },
+  "expiresIn": "7d"
+}
+```
+
+Use the `token` in the `Authorization: Bearer <token>` header for GA4 (and other admin) routes. Token expires in 7 days.
+
 ### Analytics APIs (Admin Only)
 
-All GA4 endpoints require admin authentication header:
+All GA4 endpoints require admin authentication. Use the JWT from login:
+
+**Option 1 – Bearer**
 ```
 Authorization: Bearer <admin-token>
 ```
-or
+
+**Option 2 – custom header**
 ```
 X-Admin-Token: <admin-token>
 ```
+
+**Test with curl:**
+```bash
+curl -H "Authorization: Bearer test-token" https://your-app.onrender.com/api/ga4/health
+# or
+curl -H "X-Admin-Token: test-token" https://your-app.onrender.com/api/ga4/health
+```
+
+**Bypass auth for testing:** set env `SKIP_GA4_AUTH=1` (e.g. on Render) so GA4 routes work without a token. Remove in production when using real JWT.
 
 #### Overview Metrics
 ```

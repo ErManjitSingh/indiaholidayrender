@@ -1,11 +1,12 @@
 // Main entry point for the API
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '.env') });
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const { validateGA4Config } = require('./config/validateEnv');
 const ga4Routes = require('./routes/ga4Routes');
+const authRoutes = require('./routes/authRoutes');
 const trekRoutes = require('./routes/trekRoutes');
 const trekController = require('./controllers/trekController');
 const ga4Service = require('./services/ga4Service');
@@ -34,7 +35,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+ 
 // Request logging middleware
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
@@ -94,6 +95,9 @@ app.get('/', (req, res) => {
     timestamp: new Date().toISOString(),
   });
 });
+
+// Auth (login, JWT)
+app.use('/api/auth', authRoutes);
 
 // GA4 Routes (Admin only)
 app.use('/api/ga4', ga4Routes);
