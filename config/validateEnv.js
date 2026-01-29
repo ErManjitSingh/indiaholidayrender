@@ -20,21 +20,23 @@ function validateGA4Config() {
     }
   });
 
-  // Validate service account key file
-  const fs = require('fs');
-  const path = require('path');
-  const keyPath = path.resolve(process.env.GA4_SERVICE_ACCOUNT_KEY_PATH);
-
-  if (!fs.existsSync(keyPath)) {
-    console.error(`❌ GA4 service account key file not found: ${keyPath}`);
-    console.error('📋 Make sure the JSON file exists and is committed OR mounted correctly on Render');
-    process.exit(1);
-  }
-
+  // ❌ Stop early if env vars missing (VERY IMPORTANT)
   if (missing.length > 0) {
     console.error('❌ Missing required GA4 environment variables:');
     missing.forEach((key) => console.error(`   - ${key}`));
     console.error('\n📋 Please add these to Render Environment Variables');
+    process.exit(1);
+  }
+
+  // ✅ Now safe to use key path
+  const fs = require('fs');
+  const path = require('path');
+
+  const keyPath = path.resolve(process.env.GA4_SERVICE_ACCOUNT_KEY_PATH);
+
+  if (!fs.existsSync(keyPath)) {
+    console.error(`❌ GA4 service account key file not found: ${keyPath}`);
+    console.error('📋 Make sure the JSON file exists in repo or is mounted correctly on Render');
     process.exit(1);
   }
 
